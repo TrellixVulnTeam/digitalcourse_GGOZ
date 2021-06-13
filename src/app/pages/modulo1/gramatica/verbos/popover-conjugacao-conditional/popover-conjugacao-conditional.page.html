@@ -1,0 +1,18 @@
+<List [className]="'my-list'" class="ion-no-padding" style=" overflow-x:auto;height:100%; overflow-y:auto;">
+
+    <ListItem [align]="'top'" multipleLine [arrow]="'horizontal'" (onClick)="presentModal(item)" *ngFor="let item of conjugacao; let i=index">
+        <Brief style="font-size: 70%;">{{item.heading}} </Brief>
+    </ListItem>
+</List>
+<WhiteSpace></WhiteSpace>
+
+<Modal [(ngModel)]="this.state" [popup]="true" [animationType]="'slide-up'" (onClose)="dismiss()" style=" overflow-x:auto;height:200px; overflow-y:auto;">
+
+    <List [renderHeader]="conditional.heading" [className]="'popup-list'">
+
+        <ListItem *ngFor="let form of conditional.forms"> <label style="color: brown;">{{form[0]}} </label> {{form[1]}}</ListItem>
+        <ListItem>
+            <div Button [type]="'primary'" (onClick)="dismiss()">close</div>
+        </ListItem>
+    </List>
+</Modal>

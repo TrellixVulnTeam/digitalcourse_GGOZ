@@ -1,0 +1,56 @@
+<Navbar [icon]="icon" [rightContent]="rightContent" [mode]="'ios'" (onLeftClick)="onLeftClick()" color="primary" *ngIf="!isloading">
+    {{atividadeVerb.palavraingles}} / {{atividadeVerb.palavratraduzida}}
+</Navbar>
+
+
+<ng-template #icon>
+    <ion-icon name="arrow-back-outline"></ion-icon>
+</ng-template>
+
+<ng-template #rightContent>
+    <ion-icon name="save-outline" [ngStyle]="{ marginRight: '16px' }" (click)="save()"></ion-icon>
+    <ion-icon name="create-outline" (click)="finalizar()"></ion-icon>
+</ng-template>
+
+<ion-content *ngIf="!isloading">
+    <ion-grid [ngClass]="{'on-grid1': true}">
+        <ion-row>
+            <ion-col sizeSm="4" [ngClass]="{'on-col1': true}">
+                <Brief style="color: rgb(122, 133, 129);">{{atividadeVerb.verb.root.conjugated_forms[0][0]}}</Brief>
+                <Brief>{{atividadeVerb.verb.root.conjugated_forms[0][1]}} </Brief>
+            </ion-col>
+            <ion-col sizeSm="4" [ngClass]="{'on-col1': true}">
+                <Brief style="color: rgb(133, 122, 122);">{{atividadeVerb.verb.root.conjugated_forms[1][0]}}</Brief>
+                <Brief>{{atividadeVerb.verb.root.conjugated_forms[1][1]}} </Brief>
+            </ion-col>
+            <ion-col sizeSm="4" [ngClass]="{'on-col1': true}">
+                <Brief style="color: rgb(133, 122, 122);">{{atividadeVerb.verb.root.conjugated_forms[2][0]}}</Brief>
+                <Brief>{{atividadeVerb.verb.root.conjugated_forms[2][1]}} </Brief>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="12">
+                <Flex class="ion-padding-start ion-padding-end" style="font-weight: bold;">
+                    <FlexItem>
+                        <div Button [size]="'small'" [type]="'warning'" (click)="presentPopovercondicional($event)">Condicional</div>
+                    </FlexItem>
+                    <FlexItem>
+                        <div Button [size]="'small'" [type]="'warning'" (click)="presentPopoverindicative($event)">Indicative</div>
+                    </FlexItem>
+                    <FlexItem>
+                        <div Button [type]="'warning'" [size]="'small'" (click)="presentPopoverpassive($event)">Passive</div>
+                    </FlexItem>
+                </Flex>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="12">
+                <SegmentedControl [tintColor]="'rgb(96, 151, 133)'" [values]="listasegmento" (onChange)="choose($event)"></SegmentedControl>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <app-edit-segmento-presente *ngIf="tempoverbal=='Presente'" [atividadeVerb]='atividadeVerb'></app-edit-segmento-presente>
+    <app-edit-segmento-presentecontinuo *ngIf="tempoverbal=='Presente Continuo'" [atividadeVerb]='atividadeVerb'></app-edit-segmento-presentecontinuo>
+    <app-edit-segmento-passado *ngIf="tempoverbal=='Passado'" [atividadeVerb]='atividadeVerb' [rulers]='rulers'></app-edit-segmento-passado>
+    <app-edit-segmento-futuro *ngIf="tempoverbal=='Futuro'" [atividadeVerb]='atividadeVerb' [rulers]='rulers'></app-edit-segmento-futuro>
+</ion-content>

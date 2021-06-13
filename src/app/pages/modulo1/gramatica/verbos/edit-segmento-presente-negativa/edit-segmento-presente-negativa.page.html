@@ -1,0 +1,29 @@
+<Card class="ion-no-padding">
+    <CardHeader [extra]="extra" [title]='title'>
+        <ng-template #title>
+            <Brief> <small *ngIf="translator">eng-por</small><small *ngIf="!translator">por-eng</small></Brief>
+        </ng-template>
+        <ng-template #extra>
+            <ion-icon name="swap-horizontal-outline" (click)="invertTranslator()" *ngIf="atividadeVerb.atividadesverbais.presente.negativo.frases.status!='Concluido'"></ion-icon>
+            <ion-icon name="language-outline" (click)="onTranslatenegativo()" *ngIf="atividadeVerb.atividadesverbais.presente.negativo.frases.status!='Concluido'"></ion-icon>
+        </ng-template>
+    </CardHeader>
+    <CardBody class="ion-no-padding">
+        <p class="ion-text-justify"><small *ngIf="translator"> The negative present simple is subject + don’t (do not) + infinitive without 'to' for I, you, we and they, and subject + doesn’t (does not) + infinitive without 'to' for he, she and it.</small>
+            <small *ngIf="!translator">O presente negativo simples é sujeito + não (não) + infinitivo sem 'to' para eu, você, nós e eles, e sujeito + não (não) + infinitivo sem 'to' para ele, ela e isto.</small>
+
+        </p>
+        <div><small> {{atividadeVerb.atividadesverbais.presente.negativo.estrutura}}</small> </div>
+
+        <ion-item>
+            <ion-textarea class="ion-text-justify" [(ngModel)]="atividadeVerb.atividadesverbais.presente.negativo.frases.fraseingles" [readonly]="atividadeVerb.atividadesverbais.presente.negativo.frases.status=='Concluido'" *ngIf="translator" placeholder='Enter the phrase here'></ion-textarea>
+            <ion-textarea class="ion-text-justify" *ngIf="!translator" [(ngModel)]="atividadeVerb.atividadesverbais.presente.negativo.frases.fraseportugues" [readonly]="atividadeVerb.atividadesverbais.presente.negativo.frases.status=='Concluido'" placeholder="Digite a frase aqui"></ion-textarea>
+        </ion-item>
+    </CardBody>
+    <CardFooter [content]="footerExtra">
+        <ng-template #footerExtra>
+            <p style="overflow-x:auto; overflow-y:auto;"><small *ngIf="translator">{{atividadeVerb.atividadesverbais.presente.negativo.frases.fraseportugues}} </small>
+                <small *ngIf="!translator">{{atividadeVerb.atividadesverbais.presente.negativo.frases.fraseingles}} </small></p>
+        </ng-template>
+    </CardFooter>
+</Card>

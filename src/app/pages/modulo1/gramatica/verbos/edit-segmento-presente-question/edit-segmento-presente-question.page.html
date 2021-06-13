@@ -1,0 +1,28 @@
+<Card class="ion-no-padding">
+    <CardHeader [extra]="extra" [title]='title'>
+        <ng-template #title>
+            <Brief> <small *ngIf="translator">eng-por</small><small *ngIf="!translator">por-eng</small></Brief>
+        </ng-template>
+        <ng-template #extra>
+            <ion-icon name="swap-horizontal-outline" (click)="invertTranslator()" *ngIf="atividadeVerb.atividadesverbais.presente.pergunta.frases.status!='Concluido'"></ion-icon>
+            <ion-icon name="language-outline" (click)="onTranslatepergunta()" *ngIf="atividadeVerb.atividadesverbais.presente.pergunta.frases.status!='Concluido'"></ion-icon>
+        </ng-template>
+    </CardHeader>
+    <CardBody class="ion-no-padding">
+        <p class="ion-text-justify"><small *ngIf="translator"> The present simple question form is do/does + subject + infinitive without ‘to’.</small>
+            <small *ngIf="!translator">O presente formulário de pergunta simples é fazer / fazer + sujeito + infinitivo sem 'to'.</small>
+        </p>
+
+        <div><small> {{atividadeVerb.atividadesverbais.presente.pergunta.estrutura}}</small> </div>
+        <ion-item>
+            <ion-textarea class="ion-text-justify" [(ngModel)]="atividadeVerb.atividadesverbais.presente.pergunta.frases.fraseingles" [readonly]="atividadeVerb.atividadesverbais.presente.pergunta.frases.status=='Concluido'" *ngIf="translator" placeholder='Enter the phrase here'></ion-textarea>
+            <ion-textarea class="ion-text-justify" *ngIf="!translator" [(ngModel)]="atividadeVerb.atividadesverbais.presente.pergunta.frases.fraseportugues" [readonly]="atividadeVerb.atividadesverbais.presente.pergunta.frases.status=='Concluido'" placeholder="Digite a frase aqui"></ion-textarea>
+        </ion-item>
+    </CardBody>
+    <CardFooter [content]="footerExtra">
+        <ng-template #footerExtra>
+            <p style="overflow-x:auto; overflow-y:auto;"><small *ngIf="translator">{{atividadeVerb.atividadesverbais.presente.pergunta.frases.fraseportugues}} </small>
+                <small *ngIf="!translator">{{atividadeVerb.atividadesverbais.presente.pergunta.frases.fraseingles}} </small></p>
+        </ng-template>
+    </CardFooter>
+</Card>

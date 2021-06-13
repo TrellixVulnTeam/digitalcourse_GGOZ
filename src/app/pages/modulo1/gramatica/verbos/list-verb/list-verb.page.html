@@ -1,0 +1,61 @@
+<ion-header [translucent]="true">
+
+
+    <Navbar [icon]="icon" color="primary" (onLeftClick)="onLeftClick()">
+        Gramática - Verbos
+    </Navbar>
+
+
+    <ng-template #icon>
+        <Icon [type]="'left'"></Icon>
+    </ng-template>
+
+
+</ion-header>
+
+<ion-header [translucent]="true">
+    <ion-toolbar>
+
+        <ion-segment value="all" color="tertiary" scrollable="true" [(ngModel)]="segmentModel" (ionChange)="segmentChanged($event)">
+
+            <ion-segment-button value="aberto">
+
+                <ion-label>A Fazer</ion-label>
+            </ion-segment-button>
+
+            <ion-segment-button value="concluido">
+                <ion-label>Concuidos</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="desafios">
+                <ion-label>Sentenças criadas</ion-label>
+            </ion-segment-button>
+
+        </ion-segment>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+    <!-- <app-home-gramatica *ngIf="segmentModel === 'gramatica'">
+
+    </app-home-gramatica>
+  -->
+    <app-list-verb-aberto *ngIf="segmentModel === 'aberto'"></app-list-verb-aberto>
+    <app-list-verb-concluidos *ngIf="segmentModel === 'concluido'"></app-list-verb-concluidos>
+    <ion-card *ngIf="segmentModel === 'desafios'">
+        <ion-card-header>
+            <ion-card-subtitle>Segment Content</ion-card-subtitle>
+            <ion-card-title>Favorites</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+            Keep close to Nature's heart... and break clear away, once in awhile, and climb a mountain or spend a week in the woods. Wash your spirit clean.
+        </ion-card-content>
+    </ion-card>
+
+
+
+
+
+</ion-content>

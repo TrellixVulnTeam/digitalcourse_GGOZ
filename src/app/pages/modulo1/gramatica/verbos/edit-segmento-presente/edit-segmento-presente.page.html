@@ -1,0 +1,44 @@
+<WingBlank [size]="'lg'">
+    <Card>
+        <CardHeader [title]="'PresentSimple'" [extra]="extra" [thumb]="'assets/images/PresentSimple.jpg'" [thumbStyle]="thumbStyle">
+            <ng-template #extra>
+                <ion-icon name="help-circle" (click)="helppresent()"></ion-icon>
+            </ng-template>
+        </CardHeader>
+        <CardBody>
+            <p> A conjugação do Simple Present varia de acordo com a pessoa verbal, com a terminação do verbo e com o tipo de frase (afirmativa, negativa e interrogativa.)</p>
+
+
+
+            <ion-grid>
+                <ion-row>
+                    <ion-col size="12" class="ion-no-padding">
+                        <ion-segment value="Afirmativa" mode='ios' [(ngModel)]="segmentModel" (ionChange)="segmentChanged($event)">
+                            <ion-segment-button value="Afirmativa">
+                                <ion-label>Form-Positive</ion-label>
+                            </ion-segment-button>
+                            <ion-segment-button value="Negativa">
+                                <ion-label>Form-Negative</ion-label>
+                            </ion-segment-button>
+                            <ion-segment-button value="Interrogativa">
+                                <ion-label>Form-questions</ion-label>
+                            </ion-segment-button>
+                        </ion-segment>
+
+                        <app-edit-segmento-presente-afirmativa *ngIf="segmentModel==='Afirmativa'" [atividadeVerb]='atividadeVerb'></app-edit-segmento-presente-afirmativa>
+                        <app-edit-segmento-presente-negativa *ngIf="segmentModel==='Negativa'" [atividadeVerb]='atividadeVerb'></app-edit-segmento-presente-negativa>
+                        <app-edit-segmento-presente-question *ngIf="segmentModel==='Interrogativa'" [atividadeVerb]='atividadeVerb'></app-edit-segmento-presente-question>
+                    </ion-col>
+                    <ion-col size="12">
+
+
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+            <!-- Label only -->
+
+
+        </CardBody>
+
+    </Card>
+</WingBlank>

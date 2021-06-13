@@ -1,0 +1,52 @@
+<WingBlank [size]="'lg'">
+    <Card>
+        <CardHeader [title]="title" [extra]="extra" [thumb]="thumb" [thumbStyle]="thumbStyle">
+            <ng-template #extra>
+                <ion-icon name="help-circle" (click)="helppresent()"></ion-icon>
+            </ng-template>
+            <ng-template #title>
+                <small>Present Continuous</small>
+            </ng-template>
+
+            <ng-template #thumb>
+                <img src="assets/images/Presentcontinuo.jpg" width="50">
+
+            </ng-template>
+
+
+        </CardHeader>
+        <CardBody>
+            <Card class="ion-no-padding">
+                <CardHeader [extra]="extra1" [title]='title1'>
+                    <ng-template #title1>
+                        <Brief> <small *ngIf="translator">eng-por</small><small *ngIf="!translator">por-eng</small></Brief>
+                    </ng-template>
+                    <ng-template #extra1>
+                        <ion-icon name="swap-horizontal-outline" (click)="invertTranslator()" *ngIf="atividadeVerb.atividadesverbais.presentecontinuo.frases.status!='Concluido'"></ion-icon>
+                        <ion-icon name="language-outline" (click)="onTranslateafirmativo()" *ngIf="atividadeVerb.atividadesverbais.presentecontinuo.frases.status!='Concluido'"></ion-icon>
+                    </ng-template>
+                </CardHeader>
+                <CardBody class="ion-no-padding">
+                    <p class="ion-text-justify"><small *ngIf="translator">Subject + verb to be + verb with “ing” + complement, For the negative form, just add the “not” after the verb “to be” (am, is are).</small>
+                        <small *ngIf="!translator">Sujeito + verbo to be + verbo com “ing” + complemento, Para a forma negativa, basta acrescentar o “not” após o verbo “to be” (am, is are).</small>
+
+                    </p>
+                    <div><small> {{atividadeVerb.atividadesverbais.presentecontinuo.estrutura}}</small> </div>
+                    <ion-item>
+                        <ion-textarea class="ion-text-justify" [(ngModel)]="atividadeVerb.atividadesverbais.presentecontinuo.frases.fraseingles" [readonly]="atividadeVerb.atividadesverbais.presentecontinuo.frases.status=='Concluido'" *ngIf="translator" placeholder='Enter the phrase here'></ion-textarea>
+                        <ion-textarea class="ion-text-justify" *ngIf="!translator" [(ngModel)]="atividadeVerb.atividadesverbais.presentecontinuo.frases.fraseportugues" [readonly]="atividadeVerb.atividadesverbais.presentecontinuo.frases.status=='Concluido'" placeholder="Digite a frase aqui"></ion-textarea>
+                    </ion-item>
+                </CardBody>
+                <CardFooter [content]="footerExtra">
+                    <ng-template #footerExtra>
+                        <p style="overflow-x:auto; overflow-y:auto;"><small *ngIf="translator">{{atividadeVerb.atividadesverbais.presentecontinuo.frases.fraseportugues}} </small>
+                            <small *ngIf="!translator">{{atividadeVerb.atividadesverbais.presentecontinuo.frases.fraseingles}} </small></p>
+                    </ng-template>
+                </CardFooter>
+            </Card>
+
+
+
+        </CardBody>
+    </Card>
+</WingBlank>

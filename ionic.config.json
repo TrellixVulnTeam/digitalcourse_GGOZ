@@ -1,0 +1,8 @@
+{
+  "name": "digitalcourse",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "526d4b96"
+}

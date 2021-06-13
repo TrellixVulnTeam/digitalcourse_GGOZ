@@ -1,0 +1,22 @@
+<ion-searchbar color="primary" [placeholder]="'Concluidos'" [(ngModel)]="value" (keyup)="onKeyUp($event)" (ionClear)="onKeyUp($event)"> </ion-searchbar>
+
+<ion-content>
+
+
+    <List [className]="'my-list'">
+
+        <ListItem [align]="'top'" multipleLine [arrow]="'horizontal'" (onClick)="onClick()" *ngFor="let item of itemss; let i=index">
+            {{i+1}} - {{item.present}}
+            <Brief>{{item.tranlate}} </Brief>
+        </ListItem>
+    </List>
+
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+
+
+
+</ion-content>

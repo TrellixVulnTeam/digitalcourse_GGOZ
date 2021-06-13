@@ -1,0 +1,28 @@
+<Card class="ion-no-padding">
+    <CardHeader [extra]="extra" [title]='title'>
+        <ng-template #title>
+            <Brief> <small *ngIf="translator">eng-por</small><small *ngIf="!translator">por-eng</small></Brief>
+        </ng-template>
+        <ng-template #extra>
+            <ion-icon name="swap-horizontal-outline" (click)="invertTranslator()" *ngIf="atividadeVerb.atividadesverbais.presente.afirmativo.frases.status!='Concluido'"></ion-icon>
+            <ion-icon name="language-outline" (click)="onTranslateafirmativo()" *ngIf="atividadeVerb.atividadesverbais.presente.afirmativo.frases.status!='Concluido'"></ion-icon>
+        </ng-template>
+    </CardHeader>
+    <CardBody class="ion-no-padding">
+        <p class="ion-text-justify"><small *ngIf="translator"> The present simple has the same form as the infinitive without 'to'’ for I, you, we and they. For he, she and it, we add -s or -es to the infinitive.</small>
+            <small *ngIf="!translator">  O presente simples tem a mesma forma que o infinitivo sem 'para' 'para eu, você, nós e eles. Para ele, ela e isso, adicionamos -s ou -es ao infinitivo.</small>
+
+        </p>
+        <div><small> {{atividadeVerb.atividadesverbais.presente.afirmativo.estrutura}}</small> </div>
+        <ion-item>
+            <ion-textarea class="ion-text-justify" [(ngModel)]="atividadeVerb.atividadesverbais.presente.afirmativo.frases.fraseingles" [readonly]="atividadeVerb.atividadesverbais.presente.afirmativo.frases.status=='Concluido'" *ngIf="translator" placeholder='Enter the phrase here'></ion-textarea>
+            <ion-textarea class="ion-text-justify" *ngIf="!translator" [(ngModel)]="atividadeVerb.atividadesverbais.presente.afirmativo.frases.fraseportugues" [readonly]="atividadeVerb.atividadesverbais.presente.afirmativo.frases.status=='Concluido'" placeholder="Digite a frase aqui"></ion-textarea>
+        </ion-item>
+    </CardBody>
+    <CardFooter [content]="footerExtra">
+        <ng-template #footerExtra>
+            <p style="overflow-x:auto; overflow-y:auto;"><small *ngIf="translator">{{atividadeVerb.atividadesverbais.presente.afirmativo.frases.fraseportugues}} </small>
+                <small *ngIf="!translator">{{atividadeVerb.atividadesverbais.presente.afirmativo.frases.fraseingles}} </small></p>
+        </ng-template>
+    </CardFooter>
+</Card>
