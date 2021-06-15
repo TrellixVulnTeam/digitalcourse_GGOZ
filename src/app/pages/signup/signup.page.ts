@@ -17,6 +17,7 @@ export class SignupPage implements OnInit {
     email: string,
     senha: string,
   }
+  cpassword:string;
 
   constructor(
     private http: HttpClient,
@@ -40,6 +41,10 @@ export class SignupPage implements OnInit {
     }
     if (!this.util.testaEmail(this.usuario.email)) {
       this.util.presentAlert('Atenção', 'Verifique seu email e tente novamente')
+      return false
+    }
+    if (this.cpassword!=this.usuario.senha) {
+      this.util.presentAlert('Atenção', 'Senhas não correspondem');
       return false
     }
     this.http.post(`${API_CONFIG.baseUrl}/usuarios/insertusuario?pws=${this.usuario.senha}`, this.usuario)

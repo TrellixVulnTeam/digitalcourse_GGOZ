@@ -1,5 +1,5 @@
 export const API_CONFIG = {
-    baseUrl:'https://api-courseeglish.herokuapp.com',//"http://localhost:8080",// "https://api-courseeglish.herokuapp.com",
+    baseUrl:"http://localhost:8080",// 'https://api-courseeglish.herokuapp.com',//"https://api-courseeglish.herokuapp.com",
     bucketBaseCompany:"https://storage.cloud.google.com/bucketcompan",// "https://storage.googleapis.com/bucketcompan"
     empresa:"http://localhost:10060/empresas",
     patrimonios:"http://localhost:10060/patrimonios",

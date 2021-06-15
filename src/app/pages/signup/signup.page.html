@@ -1,4 +1,152 @@
-<ion-header>
+<div class="account-body accountbg">
+    <!-- Log In page -->
+    <div class="container">
+        <div class="row vh-100">
+            <div class="col-12 align-self-center">
+                <div class="auth-page">
+                    <div class="card auth-card shadow-lg">
+                        <div class="card-body">
+                            <div class="px-3">
+                                <div class="auth-logo-box">
+                                    <a class="logo logo-admin"><img src="/assets/icon/favicon.png" height="55" alt="logo" class="auth-logo"></a>
+                                </div>
+                                <!--end auth-logo-box-->
+                                <div class="text-center auth-logo-text">
+                                    <h4 class="mt-0 mb-3 mt-5">Free Register for English Course</h4>
+                                    <p class="text-muted mb-0">Get your free English Course account now.</p>
+                                </div>
+                                <!--end auth-logo-text-->
+                                <form class="form-parsley" (ngSubmit)="createuser()">
+                                    <div class=" has-feedback auth-form my-4">
+                                        <div class="form-group has-feedback"><label for="username">Username</label>
+                                            <div class="input-group mb-3"><span class="auth-form-icon"><i class="dripicons-user"></i> </span>
+                                                <input type="text" class="form-control" id="username" placeholder="Enter username" name="nome" [(ngModel)]="usuario.nome" required></div>
+                                        </div>
+                                        <!--end form-group-->
+                                        <div class="form-group has-feedback"><label for="useremail">Email</label>
+                                            <div class="input-group mb-3"><span class="auth-form-icon"><i class="dripicons-mail"></i> </span>
+                                                <input type="email" class="form-control" id="useremail" name="email" placeholder="Enter Email" [(ngModel)]="usuario.email" data-error="Bruh, that email address is invalid" required>
+
+                                            </div>
+                                        </div>
+                                        <!--end form-group-->
+                                        <div class="form-group form-group has-feedback"><label for="userpassword">Password</label>
+                                            <div class="input-group mb-3"><span class="auth-form-icon"><i class="dripicons-lock"></i> </span>
+                                                <input type="password" class="form-control" id="userpassword" placeholder="Enter password" [(ngModel)]="usuario.senha" type="password" name="senha" required data-minlength="6" id="inputPassword">
+                                            </div>
+                                            <div class="help-block">Minimum of 6 characters</div>
+                                        </div>
+                                        <!--end form-group-->
+                                        <div class="form-group form-group has-feedback"><label for="conf_password">Confirm Password</label>
+                                            <div class="input-group mb-3"><span class="auth-form-icon"><i class="dripicons-lock-open"></i> </span>
+                                                <input type="password" class="form-control" data-parsley-equalto="#userpassword" id="conf_password" placeholder="Enter Confirm Password" name="cpassword" placeholder="Retype password" data-match="#inputPassword" data-match-error="Opa, estes não combinam"
+                                                    required>
+                                            </div>
+
+                                            <div class="help-block with-errors"></div>
+                                            <!--end form-group-->
+                                        </div>
+                                        <!--end form-group 
+                                    <div class="form-group row mt-4">
+                                        <div class="col-sm-12">
+                                            <div class="custom-control custom-switch switch-success"><input type="checkbox" class="custom-control-input" id="customSwitchSuccess"> <label class="custom-control-label text-muted" for="customSwitchSuccess">By registering you agree to the Frogetor <a href="#" class="text-primary">Terms of Use</a></label></div>
+                                        </div>
+                                        end col 
+                                    </div>
+                                    end form-group-->
+                                        <div class="form-group mb-0 row form-group  ">
+                                            <div class="col-12 mt-2"><button class="btn btn-gradient-primary btn-round btn-block waves-effect waves-light" type="submit">Register <i class="fas fa-sign-in-alt ml-1"></i></button></div>
+                                            <!--end col-->
+                                        </div>
+                                        <!--end form-group-->
+                                    </div>
+                                </form>
+                                <!--end form-->
+                            </div>
+                            <!--end /div-->
+                            <div class="m-3 text-center text-muted">
+                                <p class="">Already have an account ? <a routerLink="/login" routerDirection="forward" class="text-primary ml-2">Log in</a></p>
+                            </div>
+                        </div>
+                        <!--end card-body-->
+                    </div>
+                    <!--end card-->
+                </div>
+                <!--end auth-card-->
+            </div>
+            <!--end col-->
+        </div>
+        <!--end row-->
+    </div>
+</div>
+
+
+
+
+<!--<div class=" df-example demo-forms content-auth" style="background-color: darkslategrey;">
+    <div class=" ">
+        <div class="media align-items-stretch justify-content-center ht-100p pos-relative">
+ 
+            <div class="sign-wrapper mg-lg-l-50 mg-xl-l-60 df-example demo-forms">
+                <div class="wd-100p">
+                    <h3 class="tx-color-01 mg-b-5">Sign In</h3>
+                    <p class="tx-color-03 tx-16 mg-b-40">Welcome back! Please signin to continue.</p>
+                    <form class="form-element" data-toggle="validator" role="form" id="commentForm " (ngSubmit)="createuser()">
+                        <div class="form-group has-feedback">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Full name" name="name" [(ngModel)]="usuario.nome" required>
+                                <div class="input-group-append">
+                                    <span class="ion ion-person form-control-feedback input-group-text "></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <div class="input-group">
+                                <input name="email" type="email" class="form-control" placeholder="Email" [(ngModel)]="usuario.email" data-error="Bruh, that email address is invalid" required>
+                                <div class="input-group-append">
+                                    <span class="ion ion-email input-group-text  form-control-feedback "></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-group has-feedback ">
+                                <div class="input-group">
+                                    <input [(ngModel)]="usuario.senha" type="password" name="senha" class="form-control" placeholder="Password" required data-minlength="6" id="inputPassword">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text ion ion-locked form-control-feedback "></span>
+                                    </div>
+                                </div>
+                                <div class="help-block">Minimum of 6 characters</div>
+                            </div>
+
+                            <div class="form-group has-feedback">
+                                <div class="input-group">
+                                    <input type="password" class="form-control" placeholder="Retype password" data-match="#inputPassword" data-match-error="Opa, estes não combinam" required>
+                                    <div class="input-group-append"><span class="input-group-text ion ion-log-in form-control-feedback "></span>
+                                    </div>
+                                </div>
+                                <div class="help-block with-errors"></div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-12 text-center ">
+                                <button type="submit" class="btn btn-info btn-block btn-flat margin-top-10">SIGN
+                                        UP</button>
+                            </div>
+                        </div> 
+
+                    </form>
+                </div>
+            </div> 
+        </div> 
+    </div> 
+</div>
+-->
+<!--<ion-header>
     <ion-toolbar>
 
 
@@ -33,3 +181,4 @@
         </div>
     </div>
 </ion-content>
+-->
