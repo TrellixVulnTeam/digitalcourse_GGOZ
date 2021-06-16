@@ -1,0 +1,88 @@
+<ion-header color="primary">
+    <ion-toolbar color="primary">
+        <ion-title>Frases do Cotidiano</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content style="background-color: azure;">
+    <!--<List [className]="'my-list'" [renderHeader]="'Lista de Atividades'">
+
+        <ListItem [arrow]="'horizontal'" (onClick)="onClick(item.id)" *ngFor="let item of itemss; let i=index">
+            {{item.situacao}}
+            <Brief>Trotal de Frases: {{item.qtdsentences}} </Brief>
+        </ListItem>
+
+
+        <ng-template #thumb>
+            <img src="/assets/images/cotidiano.jpg" width="50">
+        </ng-template>
+
+    </List>
+-->
+    <ion-row class="ion-padding" *ngIf="data">
+        <ion-col size="12" *ngFor="let item of itemss; let i=index">
+            <div class="card profile-card">
+                <div class="action-btn"><a (click)="onClick(item.id)" class=""><i class="fas fa-pen text-info mr-2"></i></a>
+                </div>
+                <hr>
+                <div class="card-body p-0">
+
+                    <div class="media p-3 align-items-center">
+
+                        <div class="media-body ml-3 align-self-center">
+                            <h6 class="pro-title">{{item.grupo}} </h6>
+                            <p class="mb-2 text-muted">Total de frases:{{item.qtdsentences}} </p>
+                        </div>
+
+                    </div>
+                </div>
+                <!--end card-body-->
+            </div>
+
+        </ion-col>
+        <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+            <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+            </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+    </ion-row>
+    <div *ngIf="!data">
+
+
+        <ion-list>
+            <ion-list-header>
+                <ion-label>
+                    <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
+                </ion-label>
+            </ion-list-header>
+
+            <ion-item>
+
+                <ion-label>
+                    <h3>
+                        <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+                    </h3>
+                    <p>
+                        <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+                    </p>
+                    <p>
+                        <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                    </p>
+                </ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-skeleton-text animated style="width: 27px; height: 27px" slot="start"></ion-skeleton-text>
+                <ion-label>
+                    <h3>
+                        <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+                    </h3>
+                    <p>
+                        <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+                    </p>
+                    <p>
+                        <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                    </p>
+                </ion-label>
+            </ion-item>
+        </ion-list>
+    </div>
+</ion-content>

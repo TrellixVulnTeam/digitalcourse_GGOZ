@@ -36,7 +36,15 @@ const routes: Routes = [
     path: 'signup',
     loadChildren: () => import('./pages/signup/signup.module').then( m => m.SignupPageModule)
   },
-
+  {
+    path: 'sentencas-home/:id',
+    loadChildren: () => import('./pages/modulo2/home/sentencas-home/sentencas-home.module').then( m => m.SentencasHomePageModule)
+  }
+  ,
+  {
+    path: 'modulo2-chat',
+    loadChildren: () => import('./pages/modulo2/modulo2-chat/modulo2-chat.module').then( m => m.Modulo2ChatPageModule)
+  }
 ];
 
 @NgModule({

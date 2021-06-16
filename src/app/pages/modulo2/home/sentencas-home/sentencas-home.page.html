@@ -1,0 +1,23 @@
+<Navbar [icon]="icon" color="secondary" (onLeftClick)="onLeftClick()" [mode]="'ios'">
+    <ion-label *ngIf="!isloading"> {{atividadeSentencesAllSit.grupo}}</ion-label>
+</Navbar>
+
+
+<ng-template #icon>
+    <ion-icon name="arrow-back-outline"></ion-icon>
+</ng-template>
+
+
+
+<ion-content>
+    <List [className]="'my-list'" *ngIf="!isloading">
+
+        <ListItem [align]="'top'" (onClick)="onClick(item)" multipleLine [arrow]="'horizontal'" *ngFor="let item of atividadeSentencesAllSit.situacao; let i=index">
+            {{i+1}} - {{item.descricao}}
+            <Brief> </Brief>
+        </ListItem>
+    </List>
+
+
+
+</ion-content>

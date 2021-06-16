@@ -22,6 +22,10 @@ const routes: Routes = [
         path: 'settings',
         loadChildren: () => import('./../pages/settings/settings.module').then( m => m.SettingsPageModule)
       },
+      {
+        path: 'modulo2-home',
+        loadChildren: () => import('./../pages/modulo2/home/modulo2-home/modulo2-home.module').then( m => m.Modulo2HomePageModule)
+      },
       
     ]
   }

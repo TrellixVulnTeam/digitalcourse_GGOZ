@@ -1,0 +1,51 @@
+<Navbar [icon]="icon" color="secondary" (onLeftClick)="onLeftClick()" [mode]="'ios'">
+    <ion-label *ngIf="!isloading"> {{situacao.descricao}}</ion-label>
+</Navbar>
+
+
+<ng-template #icon>
+    <ion-icon name="arrow-back-outline"></ion-icon>
+</ng-template>
+
+
+<ion-content>
+    <div class="content-box">
+        <ion-grid fixed>
+            <div *ngFor="let item of situacao.fraseallsituations">
+                <ion-row>
+                    <ion-col size="2" class="ion-justify-content-center">
+                        <img src='/assets/icon/chatcourse.png' class="ion-justify-content-center">
+                    </ion-col>
+                    <ion-col size="10" class="ion-justify-content-center">
+                        <ion-card>
+                            <ion-card-content>
+                                <a class="action-btn" (click)="showPromptDefault(item)"><i class="fas fa-pen text-info mr-2"> </i></a>
+                                <ion-icon class="action-btn ion-float-right" name="help-circle" (click)="presentToast(item)"></ion-icon>
+
+                                <p>{{item.fraseportugues}} </p>
+
+                            </ion-card-content>
+                        </ion-card>
+
+                    </ion-col>
+                </ion-row>
+                <!-- replica-->
+                <ion-row *ngIf="item.status==='Concluido' ">
+                    <ion-col size="10 " class="ion-justify-content-center ">
+                        <ion-card>
+                            <ion-card-content>
+                                <p>{{item.atidadefraseingles}} </p>
+
+                            </ion-card-content>
+                        </ion-card>
+
+                    </ion-col>
+                    <ion-col size="2 " class="ion-justify-content-center ">
+                        <img src='/assets/images/project2.jpg' class="ion-justify-content-center ">
+                    </ion-col>
+
+                </ion-row>
+            </div>
+        </ion-grid>
+    </div>
+</ion-content>
